@@ -1,6 +1,6 @@
 <?php
 require_once 'class/usuarios.php';
-$u = new Usuario;
+$u = new Usuario("scala","localhost","root","");
 ?>
 
 <!DOCTYPE html>

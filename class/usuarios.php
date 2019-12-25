@@ -2,7 +2,16 @@
 Class Usuario{
     private $pdo;
     public $msgErro = ""; //tudo ok
-    public function conectar($nome, $host, $usuario, $senha){
+    public function __construct($nome, $host, $usuario, $senha){
+        global $pdo;
+        try{
+            $this->pdo = new PDO("mysql:dbname=".$nome.";host=".$host,$usuario,$senha, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+        } catch (PDOException $e){
+            $msgErro = $e->getMessage();
+        }
+    }
+
+        public function conectar($nome, $host, $usuario, $senha){
         global $pdo;
         try{
             $pdo = new PDO("mysql:dbname=".$nome.";host=".$host,$usuario,$senha);   
@@ -12,6 +21,7 @@ Class Usuario{
         }
     }
 
+    
     public function cadastrar($nome, $email, $senha, $novo_nome){
         global $pdo;
         //Verificar se já existe e-mail cadastrado
@@ -30,7 +40,6 @@ Class Usuario{
             return true; //tudo ok!
         }
     }
-
     public function logar($email, $senha){
         global $pdo;
         $senha = md5($senha);
@@ -39,8 +48,6 @@ Class Usuario{
         $sql->bindValue(":e",$email);
         $sql->bindValue(":s",$senha);
         $sql->execute();
-
-
     #print "SELECT id_usuario FROM usuario WHERE email = '$email' AND senha = '$senha'";
     // print $sql->rowCount();
         if($sql->rowCount() > 0){
@@ -52,9 +59,25 @@ Class Usuario{
         } else{
             return false; //não conseguiu logar
         }
-
     }
 
 
+    //Buscar dados do DB em forma de array
+    public function buscarDados($id){
+        $cmd = $this->pdo->prepare("SELECT imagem FROM usuario where id_usuario = :id");
+        $cmd->bindValue(":id", $id);
+        $cmd->execute();
+        $dados = $cmd->fetch();
+        return $dados;
+    }
+    
+    //Salva o score da sessão no DB
+    public function salvarScore($score){
+        $sql = $this->pdo->prepare("UPDATE usuario set score = :s where id_usuario = :u");
+        $sql->bindValue(":s",$_SESSION['score']);
+        $sql->bindValue(":u", $_SESSION['id_usuario']);
+        $sql->execute();
+        return $score;
+    }
 }
 ?>

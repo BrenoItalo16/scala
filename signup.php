@@ -1,6 +1,6 @@
 <?php
     require_once 'class/usuarios.php';
-    $u = new Usuario;
+    $u = new Usuario("scala","localhost","root","");
 ?>
 
 <!DOCTYPE html>
@@ -56,6 +56,8 @@
                                 Cadastrado com sucesso! Acesse para entar!
                             </div>
                             <?php
+                                $u->logar($email, $senha);
+                                Header("Location: index.php");
 
                             //Se o usuário se cadastrar com sucesso ele dever entrar no jogo imediatamente    
                             Header("Location: index.php");

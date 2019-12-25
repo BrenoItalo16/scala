@@ -1,0 +1,20 @@
+#page-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.arredondar{
+    width: 128px; 
+    height: 128px; 
+    position: relative;
+    overflow: hidden;
+ }
+ 
+.redonda{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -150px;
+ }
