@@ -1,0 +1,15 @@
+CREATE database scala;
+USE scala;
+
+CREATE TABLE usuario (
+    id_usuario Int auto_increment PRIMARY KEY,
+    nome Varchar(30),
+    email Varchar(40),
+    senha Varchar(50),
+    tema Varchar(30) DEFAULT 'estilo',
+    imagem Varchar (100),
+    horario DATETIME
+);
+
+
+// ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Ifrn.2018elemento';  
