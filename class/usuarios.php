@@ -64,7 +64,7 @@ Class Usuario{
 
     //Buscar dados do DB em forma de array
     public function buscarDados($id){
-        $cmd = $this->pdo->prepare("SELECT imagem FROM usuario where id_usuario = :id");
+        $cmd = $this->pdo->prepare("SELECT * FROM usuario where id_usuario = :id");
         $cmd->bindValue(":id", $id);
         $cmd->execute();
         $dados = $cmd->fetch();
@@ -72,12 +72,12 @@ Class Usuario{
     }
     
     //Salva o score da sessão no DB
-    public function salvarScore($score){
-        $sql = $this->pdo->prepare("UPDATE usuario set score = :s where id_usuario = :u");
-        $sql->bindValue(":s",$_SESSION['score']);
+    public function salvarTema($tema){
+        $sql = $this->pdo->prepare("UPDATE usuario set tema = :t where id_usuario = :u");
+        $sql->bindValue(":t",$_SESSION['tema']);
         $sql->bindValue(":u", $_SESSION['id_usuario']);
         $sql->execute();
-        return $score;
+        return $tema;
     }
 }
 ?>

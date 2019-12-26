@@ -4,9 +4,9 @@
 }
 
 body{
-    background-color: royalblue;
+    background-color: white;
         width: 100;
-    color: white;
+    color: royalblue;
     font-family: Arial;
 }
 
@@ -17,17 +17,17 @@ input{
     width: 400px;
     margin: 10px;
     border-radius: 30px;
-    border: 2px solid white;
+    border: 2px solid royalblue;
     font-size: 16pt;
     padding-left: 10, 20px;
     text-align: center;
     background-color: rgba(255, 255,255, 0.20);
-    color: white;
+    color: royalblue;
     outline: none;
 }
 
 input[type=submit]{
-    background-color: #350dc5;
+    background-color: white;
     display: block;
     height: 55px;
     width: 400px;
@@ -48,7 +48,7 @@ input[type=file]{
     width: 400px;
     margin: 10px;
     border-radius: 30px;
-    border: 2px solid white;
+    border: 2px solid royalblue;
     font-size: 16pt;
     padding-left: 10, 20px;
     text-align: center;
@@ -68,7 +68,7 @@ div#corpo-form h1{
 }
 
 a{
-    color: azure;
+    color: royalblue;
     text-decoration: none;
     text-align: center;
     display: block;
@@ -79,7 +79,7 @@ a:hover{
 }
 
 ::-webkit-input-placeholder{
-    color: #fff;
+    color: royalblue;
 }
 
 div#msg-sucesso{

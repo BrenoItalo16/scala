@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["tema"])){
-	$_SESSION['tema'] = "css/estilo.css";
+	$_SESSION['tema'] = "css/light.css";
 }
 ?>
 
@@ -12,17 +12,17 @@ if (!isset($_SESSION["tema"])){
             $u = new Usuario("scala","localhost","root","");
         
             $imag = $u->buscarDados($_SESSION['id_usuario']);
-            $img = $imag["imagem"];    
+            $img = $imag["imagem"];
+            $nome = $imag["nome"];
         }else{
             $img = "user.jpg";
-}
+            $nome = "Entrar";
+        }
 
-
-/*
 ?><pre><?php
-var_dump($img);
+//var_dump($_SESSION['tema']);
 ?></pre><?php
-*/
+
 
 ?>
 
@@ -36,14 +36,15 @@ var_dump($img);
     <link rel="shortcut icon" href="+image/logo.ico" type="image/x-icon">
     <!--Google Fontes-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Materialize CSS-->
-    <link rel="stylesheet" href="css/light.css">
+    
+    <!-- Alterar a folha de estilo entre Claro e Escuro -->
+	
+    <link id="tema" rel="stylesheet" href="<?=$_SESSION['tema']?>">
+    
+    
     <!-- Esilo Personalizado CSS -->
     <link rel="stylesheet" href="css/costume.css">
 
-    <!-- Alterar a folha de estilo entre Claro e Escuro -->
-	<link id="tema" rel="stylesheet" href="<?=$_SESSION['tema']?>">
-    
 
 </head>
 <body class="white">
@@ -62,8 +63,20 @@ var_dump($img);
                         <i class="material-icons blue-text text-darken-2">brightness_4</i>
                         </a></li>
 
-                    <li><a href="login.php" class="blue-text text-darken-2"><strong>Usuário</strong></a></li>
-                    
+                    <?php
+                        if (isset($_SESSION["id_usuario"])){
+                            echo('<li><a href="sair.php" class="blue-text text-darken-2">Sair</a></li>');
+                        }
+                    ?>
+
+                    <li><a href="<?php
+                        if (isset($_SESSION["id_usuario"])){
+                            echo("index.php");
+                        }else{
+                            echo "login.php";
+                        }
+                    ?>" class="blue-text text-darken-2"><strong><?php echo $nome ?></strong></a></li>
+
                     <div>
                         <div class="row">
                             <div class=" col s2">
@@ -71,7 +84,6 @@ var_dump($img);
                             </div>
                         </div>
                     </div>
-                    
                 </ul>
             </div>
         </div>
@@ -88,7 +100,15 @@ var_dump($img);
                         <li><a href="login.php"><img src="image/<?php echo $img;?>"alt="" class="circle responsive-img"></a></li>
                         <br><br>
 
-                            <a href="login.php" class="blue-text text-darken-2">Usuário</a>
+
+
+                    <li><a href="<?php
+                        if (isset($_SESSION["id_usuario"])){
+                            echo("index.php");
+                        }else{
+                            echo "login.php";
+                        }
+                    ?>" class="blue-text text-darken-2"><strong><?php echo $nome ?></strong></a></li>
                         </div>
                     </div>
                 </div>
@@ -96,10 +116,17 @@ var_dump($img);
                 
             <li><a href="#!" class="blue-text text-darken-2">Louvores Iniciais</a></li>
             <li><a href="#!" class="blue-text text-darken-2">Louvores Principais</a></li>
-            <li><a href="#!" class="blue-text text-darken-2" onclick="mudarTema()">Tema escuro
+            <li><a href="#!" class="blue-text text-darken-2" onclick="mudarTema()">Tema
                 <i class="material-icons blue-text text-darken-2">brightness_4</i>
                 </a></li>
+            <?php
+                if (isset($_SESSION["id_usuario"])){
+                    echo('<li><a href="sair.php" class="blue-text text-darken-2">Sair</a></li>');
+                }
+            ?>
+
+
+
 
         </ul>
-
     </header>
