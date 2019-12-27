@@ -6,7 +6,8 @@ CREATE TABLE usuario (
     nome Varchar(30),
     email Varchar(40),
     senha Varchar(50),
-    tema Varchar(30) DEFAULT 'light',
+    tema Varchar(30) DEFAULT 'css/light.css',
+    dark Varchar(30) DEFAULT 'css/dark.css',
     imagem Varchar (100),
     horario DATETIME
 );

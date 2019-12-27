@@ -1,6 +1,10 @@
+$(".dropdown-trigger").dropdown();
+
 $(document).ready(function(){
     $('.sidenav').sidenav();
   });
+
+
 
   	function sair(){
 		  $.ajax({

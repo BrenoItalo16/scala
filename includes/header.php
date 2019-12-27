@@ -33,7 +33,7 @@ if (!isset($_SESSION["tema"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ScalAdv</title>
-    <link rel="shortcut icon" href="+image/logo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="image/logo.ico" type="image/x-icon">
     <!--Google Fontes-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
