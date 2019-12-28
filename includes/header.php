@@ -11,9 +11,9 @@ if (!isset($_SESSION["tema"])){
             require_once 'class/usuarios.php';
             $u = new Usuario("scala","localhost","root","");
         
-            $imag = $u->buscarDados($_SESSION['id_usuario']);
-            $img = $imag["imagem"];
-            $nome = $imag["nome"];
+            $dados = $u->buscarDados($_SESSION['id_usuario']);
+            $img = $dados["imagem"];
+            $nome = $dados["nome"];
         }else{
             $img = "user.jpg";
             $nome = "Entrar";

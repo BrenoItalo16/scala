@@ -19,6 +19,28 @@
     margin-left: -150px;
  }
 
- .roda{
-    border-radius: 5%;
- }
+ 
+div#msg-sucesso{
+    width: 400px;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: rgba(50,205,50,.3);
+    border: 1px solid rgb(34,139,34);
+}
+
+div.msg-erro{
+    width: 400px;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: rgba(250,128,114,.3);
+    border: 1px solid rgb(165,42,42);
+}
+
+.icon_style{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 20px;
+    color: white;
+    cursor:pointer; 
+}

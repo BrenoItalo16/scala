@@ -48,8 +48,7 @@ Class Usuario{
         $sql->bindValue(":e",$email);
         $sql->bindValue(":s",$senha);
         $sql->execute();
-    #print "SELECT id_usuario FROM usuario WHERE email = '$email' AND senha = '$senha'";
-    // print $sql->rowCount();
+    
         if($sql->rowCount() > 0){
         //entrar no sistema (sessão)
             $dado = $sql->fetch();
