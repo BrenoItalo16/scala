@@ -17,7 +17,7 @@
     <div id="corpo-form">
         <h1>Cadastrar</h1>
         <form method="POST" enctype="multipart/form-data">
-            <input type="text" name="nome" placeholder="Nome" maxlength="30">
+            <input type="text" name="nome" placeholder="Primeiro nome" maxlength="30">
             <input type="email" name="email" placeholder="E-mail" maxlength="40">
             <input type="password" name="senha" placeholder="Senha" maxlength="15">
             <input type="password" name="confirmSenha" placeholder="Confirmar Senha" maxlength="15">

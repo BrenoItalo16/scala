@@ -57,8 +57,8 @@ if (!isset($_SESSION["tema"])){
                 <a href="index.php" class="brand-logo blue-text text-darken-2"><i class="material-icons">home</i>ScalAdv</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger blue-text text-darken-2"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="#!" class="blue-text text-darken-2">Louvores Iniciais</a></li>
-                    <li><a href="#!" class="blue-text text-darken-2">Louvores Principais</a></li>
+                    <li><a href="pregacao.php" class="blue-text text-darken-2">Pregação</a></li>
+                    <li><a href="adoracao.php" class="blue-text text-darken-2">Adoração</a></li>
                     <li><a href="#!" class="blue-text text-darken-2" onclick="mudarTema()">
                         <i class="material-icons blue-text text-darken-2">brightness_4</i>
                         </a></li>
@@ -76,14 +76,12 @@ if (!isset($_SESSION["tema"])){
                             echo "login.php";
                         }
                     ?>" class="blue-text text-darken-2"><strong><?php echo $nome ?></strong></a></li>
+                    
+                    <li>
 
-                    <div>
-                        <div class="row">
-                            <div class=" col s2">
-                                <li><a href="login.php"><img src="image/<?php echo $img;?>"alt="" class="circle responsive-img"></a></li>
-                            </div>
-                        </div>
-                    </div>
+                                <a href="login.php"><img src="image/<?php echo $img;?>"alt="" class="circle responsive-img tiny" style="width: 50px;"></a>
+                          
+                    </li>
                 </ul>
             </div>
         </div>
@@ -114,8 +112,8 @@ if (!isset($_SESSION["tema"])){
                 </div>
 
                 
-            <li><a href="#!" class="blue-text text-darken-2">Louvores Iniciais</a></li>
-            <li><a href="#!" class="blue-text text-darken-2">Louvores Principais</a></li>
+            <li><a href="pregacao.php" class="blue-text text-darken-2">Pregação</a></li>
+            <li><a href="adoracao.php" class="blue-text text-darken-2">Adoração</a></li>
             <li><a href="#!" class="blue-text text-darken-2" onclick="mudarTema()">Tema
                 <i class="material-icons blue-text text-darken-2">brightness_4</i>
                 </a></li>
@@ -124,8 +122,6 @@ if (!isset($_SESSION["tema"])){
                     echo('<li><a href="sair.php" class="blue-text text-darken-2">Sair</a></li>');
                 }
             ?>
-
-
 
 
         </ul>
