@@ -2724,6 +2724,7 @@ img.responsive-img,
 video.responsive-video {
   max-width: 100%;
   height: auto;
+   /* Adicionado por Breno Ital */
 }
 
 .pagination li a {
@@ -5341,6 +5342,13 @@ button.btn-floating {
   margin-bottom: 0;
   z-index: 997;
 }
+
+.fix-action-btn {
+  right: 23px;
+  bottom: 23px;
+  padding-top: 15px;
+}
+
 
 .fixed-action-btn.active ul {
   visibility: visible;
