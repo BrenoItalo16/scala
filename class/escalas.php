@@ -21,15 +21,27 @@ Class Escala{
         }
     }
 
-    //Buscar dados do DB em forma de array
-    public function buscarDados(){
-    //    $cmd = $this->pdo->prepare("SELECT * FROM pessoa /*where id_user = :id*/");
-        $cmd = $this->pdo->prepare("SELECT * FROM escala;");
-
-    //    $cmd->bindValue(":id", $id);
-        $cmd->execute();
-        $dados = $cmd->fetchAll();
-        return $dados;
+    //Inserir dados no BD
+    
+    public function cadastrar($nome, $email, $senha, $novo_nome){
+        global $pdo;
+        
+            $sql = $pdo->prepare("INSERT INTO escala (pregador, inicialum, inicialdois,
+                                                       especialum, especialdois, diaconoum, diaconodois,
+                                                       plataformaum, plataformadois) VALUES (:p, :inu, 
+                                                       :ind, :eu, :ed, :du, :dd, :plu, :pld)");
+            $sql->bindValue(":p", $pregador);
+            $sql->bindValue(":inu", $inicialum);
+            $sql->bindValue(":ind", $inicialdois);
+            $sql->bindValue(":eu", $especialum);
+            $sql->bindValue(":ed", $especialdois);
+            $sql->bindValue(":du", $diaconoum);
+            $sql->bindValue(":dd", $diaconodois);
+            $sql->bindValue(":plu", $plataformaum);
+            $sql->bindValue(":pld", $plataformadois);
+            $sql->execute();
+            return true; //tudo ok!
+        }
     }
 
 

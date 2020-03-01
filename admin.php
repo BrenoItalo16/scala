@@ -1,3 +1,5 @@
+<!--Corrigir código para enviar formulário para o banco de dados-->
+
 <?php require_once 'class/conectar.php'; ?>
 
 <!DOCTYPE html>
@@ -19,16 +21,47 @@
     <header>
         <nav class="grey darken-3 z-depth-1">
             <div class="container">
-                <div class="nav-wrapper">
-                    <a href="index.php" class="brand-logo grey-text text-lighten-1"><i class="material-icons">build</i>Admin</a>
-                    <a href="#" data-target="mobile-demo" class="sidenav-trigger grey-text text-lighten-1"><i class="material-icons">menu</i></a>
-                    <ul class="right hide-on-med-and-down">
-                        <li><a href="mar.php" class="grey-text text-lighten-1">Escala</a></li>
-                        <?php
-                            if (isset($_SESSION["id_usuario"])){
-                                echo('<li><a href="sair.php" class="grey-text text-lighten-1">Sair</a></li>');
-                            }
-                        ?>
+                    <div class="nav-wrapper">
+                        <a href="index.php" class="brand-logo grey-text text-lighten-1"><i class="material-icons">build</i>Admin</a>
+                        <a href="#" data-target="mobile-demo" class="sidenav-trigger grey-text text-lighten-1"><i class="material-icons">menu</i></a>
+                        <ul class="right hide-on-med-and-down">
+                            <li><a href="mar.php" class="grey-text text-lighten-1">Escala</a></li>
+                            <?php
+                                if (isset($_SESSION["id_usuario"])){
+                                    echo('<li><a href="sair.php" class="grey-text text-lighten-1">Sair</a></li>');
+                                }
+                            ?>
+
+                            <li><a href="<?php
+                                if (isset($_SESSION["id_usuario"])){
+                                    echo("index.php");
+                                }else{
+                                    echo "login.php";
+                                }
+                            ?>" class="grey-text text-lighten-5"><strong><?php echo $priNome ?></strong></a></li>
+                            
+                            <li>
+                              <a href="login.php"><img src="image/<?php echo $img;?>"alt="usuario"
+                              class="circle responsive-img" style="width: 50px;
+                                                                  margin-top:7px;"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <ul class="sidenav grey darken-4" id="mobile-demo"><br>
+
+                    <div>
+                        <div class="row center-align">
+                            <div class=" col s7">
+
+
+
+                            <li><a href="login.php"><img src="image/<?php echo $img;?>"alt="" class="circle responsive-img"></a></li>
+                            <br><br>
+
+
 
                         <li><a href="<?php
                             if (isset($_SESSION["id_usuario"])){
@@ -36,207 +69,238 @@
                             }else{
                                 echo "login.php";
                             }
-                        ?>" class="grey-text text-lighten-5"><strong><?php echo $priNome ?></strong></a></li>
-                        
-                        <li>
-                          <a href="login.php"><img src="image/<?php echo $img;?>"alt="usuario"
-                          class="circle responsive-img" style="width: 50px;
-                                                              margin-top:7px;"></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <ul class="sidenav grey darken-4" id="mobile-demo"><br>
-
-                <div>
-                    <div class="row center-align">
-                        <div class=" col s7">
-
-
-
-                        <li><a href="login.php"><img src="image/<?php echo $img;?>"alt="" class="circle responsive-img"></a></li>
-                        <br><br>
-
-
-
-                    <li><a href="<?php
-                        if (isset($_SESSION["id_usuario"])){
-                            echo("index.php");
-                        }else{
-                            echo "login.php";
-                        }
-                    ?>" class="grey-text text-lighten-5"><strong><?php echo $nome ?></strong></a></li>
+                        ?>" class="grey-text text-lighten-5"><strong><?php echo $nome ?></strong></a></li>
+                            </div>
                         </div>
                     </div>
-                </div>
 
+                    
+                <li><a href="mar.php" class="grey-text text-lighten-1">Escala</a></li>
                 
-            <li><a href="mar.php" class="grey-text text-lighten-1">Escala</a></li>
+                <?php
+                    if (isset($_SESSION["id_usuario"])){
+                        echo('<li><a href="sair.php" class="grey-text text-lighten-1">Sair</a></li>');
+                    }
+                ?>
+            </ul>
+
+        </header>
+
+    <?php
+      #Dados das pessoas
+      require_once 'class/pessoas.php';
+      $p = new Pessoa("scala","localhost","root","");
+      $pessoas = $p->buscarDados();
+        
+      #Dados dos anos
+      require_once 'class/anos.php';
+      $a = new Ano("scala","localhost","root","");
+      $anos = $a->buscarDados();
+
+      #Dados dos meses
+      require_once 'class/meses.php';
+      $m = new Mes("scala","localhost","root","");
+      $meses = $m->buscarDados();
+
+      #Dados dos dias
+      require_once 'class/dias.php';
+      $d = new Dia("scala","localhost","root","");
+      $dias = $d->buscarDados();
+    ?>
+
+        <main class="z-depth-0">
+          <div class="container z-depth-0">
+
+
+            <form action="" method="post">
+              <nav class="z-depth-0">
+                <div class="center grey darken-4">
+                  <div>
+                    <h5 class="grey-text text-lighten-1" style="margin-bottom:20px">Escolha um dia</h5>
+                  </div>
+                  
+                <!--Selects-->            
+                <div class="row"> 
+                <div class="col l3 m2"></div>
+                <div class="col l6 m8 s12">
+                  <div class="col l4 n4 s4">
+                      <select class="browser-default">
+                          <option value="" disabled selected>Ano</option>
+                            <?php 
+                              foreach ($anos as $ano) {
+                                echo'<option value="'.(array_unique($ano)["id_ano"]).'">'.(array_unique($ano)["id_ano"]).'</option>';
+                              }
+                            ?>
+                      </select>
+                  </div>
+                  <div class="col l4 n4 s4">
+                      <select class="browser-default">
+                          <option value="" disabled selected>Mês</option>
+                            <?php 
+                              foreach ($meses as $mes) {
+                                echo'<option style="text-transform: capitalize" value="'.(array_unique($mes)["id_mes"]).'">'.(array_unique($mes)["nome_mes"]).'</option>';
+                              }
+                            ?>
+                      </select>
+                  </div>
+                  <div class="col l4 n4 s4">
+                      <select class="browser-default">
+                          <option value="" disabled selected>Dia</option>
+                            <?php 
+                              foreach ($dias as $dia) {
+                                echo'<option value="'.(array_unique($dia)["id_dia"]).'">'.(array_unique($dia)["id_dia"]).'</option>';
+                              }
+                            ?>
+                      </select>
+                  </div>
+                </div>
+                <div class="col l3 m2"></div>
+                </div>
+
+                <!--Área de ajax-->
+                  <div class="row"> 
+                  <div class="col l3 m2"></div>
+                  <div class="col l6 m8 s12">
+                    <div class="col l12 n12 s12">
+                        <label>Escala do dia</label>
+                        <select class="browser-default">
+                            <option value="" disabled selected>Pregador</option>
+                            <?php 
+                              foreach ($pessoas as &$pessoa) {
+                                echo'<option value="'.(array_unique($pessoa)["id_user"]).'">'.(array_unique($pessoa)["nome"]).'</option>';
+                              }
+                            ?>
+                        </select>
+                    </div>
+                  </div>
+                  <div class="col l3 m2"></div>
+                  </div>
+                  
+                  <div class="row"> 
+                  <div class="col l3 m2"></div>
+                  <div class="col l6 m8 s12">
+                    <div class="col l6 m6 s6">
+                        <select class="browser-default">
+                            <option value="" disabled selected>Inicial 1</option>
+                            <?php 
+                              foreach ($pessoas as &$pessoa) {
+                                echo'<option value="'.(array_unique($pessoa)["id_user"]).'">'.(array_unique($pessoa)["nome"]).'</option>';
+                              }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="col l6 m6 s6">
+                        <select class="browser-default">
+                            <option value="" disabled selected>Inicial 2</option>
+                            <?php 
+                              foreach ($pessoas as &$pessoa) {
+                                echo'<option value="'.(array_unique($pessoa)["id_user"]).'">'.(array_unique($pessoa)["nome"]).'</option>';
+                              }
+                            ?>
+                        </select>
+                    </div>
+                  </div>
+                  <div class="col l3 m2"></div>
+                  </div>
+                  
+                  <div class="row"> 
+                  <div class="col l3 m2"></div>
+                  <div class="col l6 m8 s12">
+                    <div class="col l6 m6 s6">
+                        <select class="browser-default">
+                            <option value="" disabled selected>Especial 1</option>
+                            <?php 
+                              foreach ($pessoas as &$pessoa) {
+                                echo'<option value="'.(array_unique($pessoa)["id_user"]).'">'.(array_unique($pessoa)["nome"]).'</option>';
+                              }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="col l6 m6 s6">
+                        <select class="browser-default">
+                            <option value="" disabled selected>Especial 2</option>
+                            <?php 
+                              foreach ($pessoas as &$pessoa) {
+                                echo'<option value="'.(array_unique($pessoa)["id_user"]).'">'.(array_unique($pessoa)["nome"]).'</option>';
+                              }
+                            ?>
+                        </select>
+                    </div>
+                  </div>
+                  <div class="col l3 m2"></div>
+                  </div>
+                  
+                  <div class="row"> 
+                  <div class="col l3 m2"></div>
+                  <div class="col l6 m8 s12">
+                    <div class="col l6 m6 s6">
+                        <select class="browser-default">
+                            <option value="" disabled selected>Diácono 1</option>
+                            <?php 
+                              foreach ($pessoas as &$pessoa) {
+                                echo'<option value="'.(array_unique($pessoa)["id_user"]).'">'.(array_unique($pessoa)["nome"]).'</option>';
+                              }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="col l6 m6 s6">
+                        <select class="browser-default">
+                            <option value="" disabled selected>Diácono 2</option>
+                            <?php 
+                              foreach ($pessoas as &$pessoa) {
+                                echo'<option value="'.(array_unique($pessoa)["id_user"]).'">'.(array_unique($pessoa)["nome"]).'</option>';
+                              }
+                            ?>
+                        </select>
+                    </div>
+                  </div>
+                  <div class="col l3 m2"></div>
+                  </div>
+                  
+                  <div class="row"> 
+                  <div class="col l3 m2"></div>
+                  <div class="col l6 m8 s12">
+                    <div class="col l6 m6 s6">
+                        <select class="browser-default">
+                            <option value="" disabled selected>Plataforma 1</option>
+                            <?php 
+                              foreach ($pessoas as &$pessoa) {
+                                echo'<option value="'.(array_unique($pessoa)["id_user"]).'">'.(array_unique($pessoa)["nome"]).'</option>';
+                              }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="col l6 m6 s6">
+                        <select class="browser-default">
+                            <option value="" disabled selected>Plataforma 2</option>
+                            <?php 
+                              foreach ($pessoas as &$pessoa) {
+                                echo'<option value="'.(array_unique($pessoa)["id_user"]).'">'.(array_unique($pessoa)["nome"]).'</option>';
+                              }
+                            ?>
+                        </select>
+                      </div>
+                      
+                                    <button class="btn waves-effect waves-light" type="submit" 
+                                      name="action">Confirmar</button>
+                    </div>
+                    <div class="col l3 m2"></div>
+                  </div>
+                  
+                </div>
+              </nav>
+              
+              
+            </form>
             
-            <?php
-                if (isset($_SESSION["id_usuario"])){
-                    echo('<li><a href="sair.php" class="grey-text text-lighten-1">Sair</a></li>');
-                }
-            ?>
-        </ul>
-
-    </header>
-
-<?php
-  #Dados das pessoas
-  require_once 'class/pessoas.php';
-  $p = new Pessoa("scala","localhost","root","");
-  $pessoas = $p->buscarDados();
-    
-  #Dados dos anos
-  require_once 'class/anos.php';
-  $a = new Ano("scala","localhost","root","");
-  $anos = $a->buscarDados();
-
-  #Dados dos meses
-  require_once 'class/meses.php';
-  $m = new Mes("scala","localhost","root","");
-  $meses = $m->buscarDados();
-
-  #Dados dos dias
-  require_once 'class/dias.php';
-  $d = new Dia("scala","localhost","root","");
-  $dias = $d->buscarDados();
-?>
-
-    <main class="z-depth-0">
-      <div class="container z-depth-0">
-          <nav class="z-depth-0">
-            <div class="center grey darken-4">
-              <div>
-                <h5 class="grey-text text-lighten-1" style="margin-bottom:20px">Escolha um dia</h5>
-              </div>
-              
-            <!--Selects-->            
-            <div class="row"> 
-            <div class="col l3 m2"></div>
-            <div class="col l6 m8 s12">
-              <div class="col l4 n4 s4">
-                  <select class="browser-default">
-                      <option value="" disabled selected>Ano</option>
-                        <?php 
-                          foreach ($anos as $ano) {
-                            echo'<option value="'.(array_unique($ano)["id_ano"]).'">'.(array_unique($ano)["id_ano"]).'</option>';
-                          }
-                        ?>
-                  </select>
-              </div>
-              <div class="col l4 n4 s4">
-                  <select class="browser-default">
-                      <option value="" disabled selected>Mês</option>
-                        <?php 
-                          foreach ($meses as $mes) {
-                            echo'<option style="text-transform: capitalize" value="'.(array_unique($mes)["id_mes"]).'">'.(array_unique($mes)["nome_mes"]).'</option>';
-                          }
-                        ?>
-                  </select>
-              </div>
-              <div class="col l4 n4 s4">
-                  <select class="browser-default">
-                      <option value="" disabled selected>Dia</option>
-                        <?php 
-                          foreach ($dias as $dia) {
-                            echo'<option value="'.(array_unique($dia)["id_dia"]).'">'.(array_unique($dia)["id_dia"]).'</option>';
-                          }
-                        ?>
-                  </select>
-              </div>
-            </div>
-            <div class="col l3 m2"></div>
-            </div>
-
-            <!--Área de ajax-->
-              <div class="row"> 
-              <div class="col l3 m2"></div>
-              <div class="col l6 m8 s12">
-                <div class="col l12 n12 s12">
-                    <label>Escala do dia</label>
-                    <select class="browser-default">
-                        <option value="" disabled selected>Pregador</option>
-                        <?php 
-                          foreach ($pessoas as &$pessoa) {
-                            echo'<option value="'.(array_unique($pessoa)["id_user"]).'">'.(array_unique($pessoa)["nome"]).'</option>';
-                          }
-                        ?>
-                    </select>
-                </div>
-              </div>
-              <div class="col l3 m2"></div>
-              </div>
-              
-              <div class="row"> 
-              <div class="col l3 m2"></div>
-              <div class="col l6 m8 s12">
-                <div class="col l6 m6 s6">
-                    <select class="browser-default">
-                        <option value="" disabled selected>Inicial 1</option>
-                        <?php 
-                          foreach ($pessoas as &$pessoa) {
-                            echo'<option value="'.(array_unique($pessoa)["id_user"]).'">'.(array_unique($pessoa)["nome"]).'</option>';
-                          }
-                        ?>
-                    </select>
-                </div>
-                <div class="col l6 m6 s6">
-                    <select class="browser-default">
-                        <option value="" disabled selected>Inicial 2</option>
-                        <?php 
-                          foreach ($pessoas as &$pessoa) {
-                            echo'<option value="'.(array_unique($pessoa)["id_user"]).'">'.(array_unique($pessoa)["nome"]).'</option>';
-                          }
-                        ?>
-                    </select>
-                </div>
-              </div>
-              <div class="col l3 m2"></div>
-              </div>
-              
-              <div class="row"> 
-              <div class="col l3 m2"></div>
-              <div class="col l6 m8 s12">
-                <div class="col l6 m6 s6">
-                    <select class="browser-default">
-                        <option value="" disabled selected>Especial 1</option>
-                        <?php 
-                          foreach ($pessoas as &$pessoa) {
-                            echo'<option value="'.(array_unique($pessoa)["id_user"]).'">'.(array_unique($pessoa)["nome"]).'</option>';
-                          }
-                        ?>
-                    </select>
-                </div>
-                <div class="col l6 m6 s6">
-                    <select class="browser-default">
-                        <option value="" disabled selected>Especial 2</option>
-                        <?php 
-                          foreach ($pessoas as &$pessoa) {
-                            echo'<option value="'.(array_unique($pessoa)["id_user"]).'">'.(array_unique($pessoa)["nome"]).'</option>';
-                          }
-                        ?>
-                    </select>
-                </div>
-              </div>
-              <div class="col l3 m2"></div>
-              </div>
-
-            </div>
-          </nav>
-          
-
-
-
-      </div>
-    </main>
+            
+            
+          </div>
+        </main>
         <footer class="page-footer deep-purple">          
           <div class="footer-copyright">
             <div class="container">
-            © 2020 Breno Italo
+              © 2020 Breno Italo
             <a class="grey-text text-lighten-4 right" href="https://github.com/BrenoItalo16">brenoitalo.com</a>
             </div>
           </div>
@@ -248,5 +312,76 @@
         <script src="js/materialize.js"></script>
         <!-- Scrip costumizado -->
         <script src="js/main.js"></script>
+
+        <?php
+    //clicou no botão
+    if(isset($_POST['pregador'])){
+        $pregador = addslashes($_POST['pregador']);
+        $inicialum = addslashes($_POST['inicialum']);
+        $inicialdois = addslashes($_POST['inicialdois']);
+        $especialum = addslashes($_POST['especialum']);
+        $especialdois = addslashes($_POST['especialdois']);
+        $diaconoum = addslashes($_POST['diaconoum']);
+        $diaconodois = addslashes($_POST['diaconodois']);
+        $plataformaum = addslashes($_POST['plataformaum']);
+        $plataformadois = addslashes($_POST['plataformadois']);
+        
+
+
+
+        //Verificar se esta preenchido
+        if(!empty($pregador)&& !empty($inicialum)&& !empty($inicialdois)&& 
+           !empty($especialum)&& !empty($especialdois)&& !empty($diaconoum)&& 
+           !empty($especialdois)&& !empty($plataformaum)&& !empty($plataformadois)){
+        //  $u->conectar("epiz_24468694_projeto_login","sql101.epizy.com","epiz_24468694","iJMh79rcSR3XQD"); //Para uso na núvem
+            $u->conectar("scala","localhost","root","");  //Para uso na máquina
+                if($u->msgErro == ""){ //Se esta tudo ok
+                    if($pregador == $pregador){
+                        if($u->cadastrar($pregador, $inicialum, $inicialdois, 
+                         $especialum, $especialdois, $diaconoum, 
+                         $especialdois, $plataformaum, $plataformadois)){
+                            ?>
+                            <div id="msg-sucesso">
+                                Cadastrado com sucesso! Acesse para entar!
+                            </div>
+                            <?php
+                                $u->logar($email, $senha);
+                                Header("Location: admin.php");
+
+
+                        }
+                         else{
+                            ?>
+                            <div class="msg-erro">
+                                Ocorreu algum erro!
+                            </div>
+                            <?php
+                        }
+                    } else{
+                        ?>
+                        <div class="msg-erro">
+                            Ocorreu algum erro!
+                        </div>
+                        <?php
+                    }
+
+                } else{
+                    ?>
+                    <div class="msg-erro">
+                        <?php echo "Erro: ".$u->msgErro;?>
+                    </div>
+                    <?php
+                }
+        } else{
+            ?>
+            <div class="msg-erro">
+                Preencha todos os campos!
+            </div>
+            <?php
+        }
+    }
+    
+?>
+
     </body>
   </html>
