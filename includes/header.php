@@ -1,11 +1,4 @@
 <?php
-session_start();
-if (!isset($_SESSION["tema"])){
-	$_SESSION['tema'] = "css/light.css";
-}
-?>
-
-<?php
 
         if(isset($_SESSION['id_usuario'])){
             require_once 'class/usuarios.php';
@@ -18,11 +11,6 @@ if (!isset($_SESSION["tema"])){
             $img = "user.jpg";
             $nome = "Entrar";
         }
-
-?><pre><?php
-//var_dump($_SESSION['tema']);
-?></pre><?php
-
 ?>
 
 <!DOCTYPE html>
@@ -32,18 +20,12 @@ if (!isset($_SESSION["tema"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ScalAdv</title>
-    <link rel="shortcut icon" href="image/logo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="image/adv-Icon.ico" type="image/x-icon">
     <!--Google Fontes-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
-    <!-- Alterar a folha de estilo entre Claro e Escuro -->
-	
-    <link id="tema" rel="stylesheet" href="<?=$_SESSION['tema']?>">
-    
-    
     <!-- Esilo Personalizado CSS -->
-    <link rel="stylesheet" href="css/costume.css">
-
+    <link rel="stylesheet" href="css/light.css">
 
 </head>
 <body class="white">
@@ -56,11 +38,7 @@ if (!isset($_SESSION["tema"])){
                 <a href="index.php" class="brand-logo blue-text text-darken-2"><i class="material-icons">home</i>ScalAdv</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger blue-text text-darken-2"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="escala.php" class="blue-text text-darken-2">Escala</a></li>
-                    <li><a href="#!" class="blue-text text-darken-2" onclick="mudarTema()">
-                        <i class="material-icons blue-text text-darken-2">brightness_4</i>
-                        </a></li>
-
+                    <li><a href="mar.php" class="blue-text text-darken-2">Escala</a></li>
                     <?php
                         if (isset($_SESSION["id_usuario"])){
                             echo('<li><a href="sair.php" class="blue-text text-darken-2">Sair</a></li>');
@@ -110,10 +88,8 @@ if (!isset($_SESSION["tema"])){
                 </div>
 
                 
-            <li><a href="escala.php" class="blue-text text-darken-2">Escala</a></li>
-            <li><a href="#!" class="blue-text text-darken-2" onclick="mudarTema()">Tema
-                <i class="material-icons blue-text text-darken-2">brightness_4</i>
-                </a></li>
+            <li><a href="mar.php" class="blue-text text-darken-2">Escala</a></li>
+            
             <?php
                 if (isset($_SESSION["id_usuario"])){
                     echo('<li><a href="sair.php" class="blue-text text-darken-2">Sair</a></li>');

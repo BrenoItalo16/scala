@@ -4,12 +4,11 @@
 }
 
 body{
-    background-color: white;
+    background-color: rgb(149, 196, 186);
         width: 100;
     color: royalblue;
     font-family: Arial;
 }
-
 
 input{
     display: block;
@@ -27,7 +26,8 @@ input{
 }
 
 input[type=submit]{
-    background-color: white;
+    color: aquamarine;
+    background-color: rgb(10, 114, 233);
     display: block;
     height: 55px;
     width: 400px;

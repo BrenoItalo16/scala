@@ -10,18 +10,18 @@ $u = new Usuario("scala","localhost","root","");
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Login</title>
-        <link rel="shortcut icon" href="image/logo.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="image/adv-Icon.ico" type="image/x-icon">
         <link rel="stylesheet" href="css/login.css">
     </head>
 <body>
+
     <div class="container">
         <div id="corpo-form">
-            <h1>Entrar</h1>
+            <h1>ADMINISTRADOR</h1>
             <form method="POST">
                 <input type="email" name="email" placeholder="Insira seu email">
                 <input type="password" name="senha" placeholder="Insira a Senha">
                 <input type="submit" value="Acessar">
-                <a href="signup.php">Ainda não é inscrito? <strong>Cadastre-se!</strong></a>
             </form>
         </div>
     </div>
@@ -36,7 +36,7 @@ $u = new Usuario("scala","localhost","root","");
                 $u->conectar("scala","localhost","root","");  //Para a máquina
                 if($u->msgErro == ""){
                     if($u->logar($email, $senha)){
-                        Header("Location: index.php");
+                        Header("Location: mar.php");
                     } else{
                         ?>
                         <div class="msg-erro">
