@@ -36,7 +36,7 @@ $u = new Usuario("scala","localhost","root","");
                 $u->conectar("scala","localhost","root","");  //Para a máquina
                 if($u->msgErro == ""){
                     if($u->logar($email, $senha)){
-                        Header("Location: mar.php");
+                        Header("Location: admin.php");
                     } else{
                         ?>
                         <div class="msg-erro">

@@ -4,7 +4,6 @@
 <nav>
     <div class="row center blue">
       <div class="col s12">
-        <a href="jan.php" class="breadcrumb blue-text text-lighten-4">Janeiro</a>
         <a href="fev.php" class="breadcrumb blue-text text-lighten-4">Fevereiro</a>
         <a href="#!.php" class="breadcrumb white-text">Março</a>
         <a href="#!.php" class="breadcrumb blue-text text-lighten-4">Abril</a>
@@ -127,7 +126,7 @@
                                         <span class="title"><h5>Pregador</h5></span>
                                         <p>
                                             <div class="chip">
-                                                <img src="image/user.jpg" alt="Contact Person">
+                                                <img src="image/batista.jpg" alt="Contact Person">
                                                 Batista
                                             </div>
                                         </p>
@@ -138,11 +137,11 @@
                                         <span class="title"><h5>Louvor inicial</h5></span>
                                         <p>
                                             <div class="chip">
-                                                <img src="image/user.jpg" alt="Contact Person">
+                                                <img src="image/batista.jpg" alt="Contact Person">
                                                 Batista
                                             </div>
                                             <div class="chip">
-                                                <img src="image/user.jpg" alt="Contact Person">
+                                                <img src="image/claudinete.jpg" alt="Contact Person">
                                                 Claudinete
                                             </div>
                                         </p>
@@ -235,7 +234,7 @@
                                         <span class="title"><h5>Louvor especial</h5></span>
                                         <p>
                                             <div class="chip">
-                                                <img src="image/user.jpg" alt="Contact Person">
+                                                <img src="image/claudinete.jpg" alt="Contact Person">
                                                 Claudinete
                                             </div>
                                             <div class="chip">
@@ -299,7 +298,7 @@
                                         <span class="title"><h5>Pregador</h5></span>
                                         <p>
                                             <div class="chip">
-                                                <img src="image/user.jpg" alt="Contact Person">
+                                                <img src="image/claudinete.jpg" alt="Contact Person">
                                                 Claudinete
                                             </div>
                                         </p>
@@ -414,7 +413,7 @@
                                         <span class="title"><h5>Louvor especial</h5></span>
                                         <p>
                                             <div class="chip">
-                                                <img src="image/user.jpg" alt="Contact Person">
+                                                <img src="image/maria.jpg" alt="Contact Person">
                                                 Maria Luíza
                                             </div>
                                         </p>
@@ -490,7 +489,7 @@
                                         <span class="title"><h5>Louvor inicial</h5></span>
                                         <p>
                                             <div class="chip">
-                                                <img src="image/user.jpg" alt="Contact Person">
+                                                <img src="image/batista.jpg" alt="Contact Person">
                                                 Batista
                                             </div>
                                             <div class="chip">
@@ -589,7 +588,7 @@
                                                 Tales
                                             </div>
                                             <div class="chip">
-                                                <img src="image/user.jpg" alt="Contact Person">
+                                                <img src="image/maria.jpg" alt="Contact Person">
                                                 Maria Luíza
                                             </div>
                                         </p>
@@ -677,7 +676,7 @@
                                             Vinícius
                                         </div>
                                         <div class="chip">
-                                            <img src="image/user.jpg" alt="Contact Person">
+                                            <img src="image/claudinete.jpg" alt="Contact Person">
                                             Claudinete
                                         </div>
                                     </p>
@@ -924,7 +923,7 @@
                                     <span class="title"><h5>Pregador</h5></span>
                                     <p>
                                         <div class="chip">
-                                            <img src="image/user.jpg" alt="Contact Person">
+                                            <img src="image/claudinete.jpg" alt="Contact Person">
                                             Claudinete
                                         </div>
                                     </p>
@@ -1111,7 +1110,7 @@
                                             José
                                         </div>
                                         <div class="chip">
-                                            <img src="image/user.jpg" alt="Contact Person">
+                                            <img src="image/maria.jpg" alt="Contact Person">
                                             Maria Luíza
                                         </div>
                                     </p>

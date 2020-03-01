@@ -38,6 +38,19 @@ CREATE TABLE pessoa (
     nome VARCHAR(40),
     imagem VARCHAR(100)
 );
+
+CREATE TABLE escala (
+    id_escala INTEGER auto_increment PRIMARY KEY,
+    pregador Varchar(30),
+    inicialum Varchar(30),
+    inicialdois Varchar(30),
+    especialum Varchar(30),
+    especialdois Varchar(30),
+    diaconoum Varchar(30),
+    diaconodois Varchar(30),
+    plataformaum Varchar(30),
+    plataformadois Varchar(30)
+);
  
 ALTER TABLE mes ADD CONSTRAINT FK_mes_2
     FOREIGN KEY (fk_ano_mes)
@@ -83,3 +96,30 @@ INSERT INTO `semana`(`id_semana`, `dia_semana`) VALUES
 (5,"quinta-feira"),
 (6,"sexta-feira"),
 (7,"sábado");
+
+INSERT INTO `pessoa`(`id_user`, `nome`, `imagem`) VALUES
+(1,"Breno","breno.jpg"),
+(2,"Carly","carly.jpg"),
+(3,"Roney","roney.jpg"),
+(4,"Batista","batista.jpg"),
+(5,"Tales","tales.png"),
+(6,"Jusaína","user.jpg"),
+(7,"José","jose.jpg"),
+(8,"Yana","yana.jpg"),
+(9,"Rafaela","rafaela.jpg"),
+(10,"Iza","iza.jpg"),
+(11,"Walison","walison.jpg"),
+(12,"Sandra","sandra.jpg"),
+(13,"Vinícius","vinicius.jpg"),
+(14,"Nielison","user.jpg"),
+(15,"Raíla","user.jpg"),
+(16,"Raylan","raylan.jpg"),
+(17,"Dairla","dairla.jpg"),
+(18,"Wladmir","wladmir.jpg"),
+(19,"Maria Luiza","maria.jpg"),
+(20,"Jair","jair.jpg");
+
+INSERT INTO `dia`(`id_dia`) VALUES
+(1),(2),(3),(4),(5),(6),(7),(8),(9),(10),
+(11),(12),(13),(14),(15),(16),(17),(18),(19),(20),
+(21),(22),(23),(24),(25),(26),(27),(28),(29),(30),(31);

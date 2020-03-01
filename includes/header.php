@@ -1,16 +1,23 @@
 <?php
+  session_start();
+  if(isset($_SESSION['id_usuario'])){
+      require_once 'class/usuarios.php';
+      $u = new Usuario("scala","localhost","root","");
 
-        if(isset($_SESSION['id_usuario'])){
-            require_once 'class/usuarios.php';
-            $u = new Usuario("scala","localhost","root","");
-        
-            $dados = $u->buscarDados($_SESSION['id_usuario']);
-            $img = $dados["imagem"];
-            $nome = $dados["nome"];
-        }else{
-            $img = "user.jpg";
-            $nome = "Entrar";
-        }
+      $dados = $u->buscarDados($_SESSION['id_usuario']);
+      $nome = $dados["nome"];
+      
+      $priNome = $nome;
+      $priNome = explode(" ", $priNome);
+      $priNome = $priNome[0];
+      $img = $priNome.".jpg";
+      $img = strtolower($img);
+  
+  }else{
+      $img = "user.jpg";
+      $nome = "Entrar";
+  }
+
 ?>
 
 <!DOCTYPE html>
@@ -42,6 +49,7 @@
                     <?php
                         if (isset($_SESSION["id_usuario"])){
                             echo('<li><a href="sair.php" class="blue-text text-darken-2">Sair</a></li>');
+                            echo('<li><a href="admin.php" class="blue-text text-darken-2">Admin</a></li>');
                         }
                     ?>
 

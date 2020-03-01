@@ -21,7 +21,7 @@ Class Usuario{
         }
     }
 
-    
+    /*    
     public function cadastrar($nome, $email, $senha, $novo_nome){
         global $pdo;
         //Verificar se já existe e-mail cadastrado
@@ -40,6 +40,8 @@ Class Usuario{
             return true; //tudo ok!
         }
     }
+
+    */    
     public function logar($email, $senha){
         global $pdo;
         $senha = md5($senha);
