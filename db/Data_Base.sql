@@ -69,7 +69,12 @@ ALTER TABLE dia ADD CONSTRAINT FK_dia_4
     FOREIGN KEY (fk_dia_semana)
     REFERENCES semana (id_semana);
 
-INSERT INTO `usuario` (`id_usuario`, `nome`, `email`, `senha`) VALUES (NULL, 'Breno Italo', 'srbrenoitalo16@gmail.com', 'a72325099d140e918a2e538fa3dbcdef');
+INSERT INTO `usuario` (`id_usuario`, `nome`, `email`, `senha`) VALUES 
+    (NULL, 'Breno Italo', 'srbrenoitalo16@gmail.com', 'a72325099d140e918a2e538fa3dbcdef'),
+    (NULL, 'Roney Stepherson', 'roney@adventista.com', ' a00924400cf71ce8b431f04b3acdd4a0'),
+    (NULL, 'Yana', 'yana@adventista.com', ' a00924400cf71ce8b431f04b3acdd4a0'),
+    (NULL, 'Rafaela', 'rafaela@adventista.com', ' a00924400cf71ce8b431f04b3acdd4a0');
+    
 INSERT INTO `ano`(`id_ano`) VALUES
 (2020),
 (2021);
